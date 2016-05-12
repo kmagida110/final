@@ -4,7 +4,7 @@ This project will provide different routes (for road trips or sightseeing) aroun
 
 The database will be seeded with all the states and many major cities with descriptive information that can be added in bulk. A few routes and landmarks will also be added as a base and more can be added. There will also be the option to add cities but it will either require the user to know that lat/long or require a call to the Google API.
 
-
+Ideally the seeding of the databases will be done automatically through an API call to the census or a similar site.
 
 # Resources
 
