@@ -1,0 +1,8 @@
+<h1>User Page</h1>
+
+<% if session['user_id'].to_i == @user.id %>
+<p>User: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<% else %>
+<p>Buzz off</p>
+<% end %>

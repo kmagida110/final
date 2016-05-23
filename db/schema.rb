@@ -13,4 +13,59 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  create_table "cities", force: :cascade do |t|
+    t.string  "name"
+    t.integer "population"
+    t.integer "lat"
+    t.integer "long"
+  end
+
+  create_table "landmarks", force: :cascade do |t|
+    t.string  "name"
+    t.integer "city_id"
+    t.text    "description"
+  end
+
+  add_index "landmarks", ["city_id"], name: "index_landmarks_on_city_id"
+
+  create_table "routes", force: :cascade do |t|
+    t.text    "name"
+    t.integer "legs"
+    t.text    "description"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string  "name"
+    t.integer "capital_id"
+  end
+
+  add_index "states", ["capital_id"], name: "index_states_on_capital_id"
+
+  create_table "user_routes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "route_id"
+    t.boolean "completed", default: false
+  end
+
+  add_index "user_routes", ["route_id"], name: "index_user_routes_on_route_id"
+  add_index "user_routes", ["user_id"], name: "index_user_routes_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string  "name"
+    t.string  "email"
+    t.string  "password"
+    t.boolean "admin",    default: false
+  end
+
+  create_table "waypoints", force: :cascade do |t|
+    t.integer "route_id"
+    t.integer "city_id"
+    t.integer "route_number"
+    t.integer "distance"
+    t.boolean "last_point",   default: false
+  end
+
+  add_index "waypoints", ["city_id"], name: "index_waypoints_on_city_id"
+  add_index "waypoints", ["route_id"], name: "index_waypoints_on_route_id"
+
 end

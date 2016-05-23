@@ -1,0 +1,13 @@
+<%= form_for @user do |form| %>
+
+  <p><%= form.label :name %>
+  <%= form.text_field :name, size: 80, autofocus: true %></p>
+
+  <p><%= form.label :email %>
+  <%= form.text_field :email %></p>
+
+  <p><%= form.label :password %><%= form.password_field :password, size: 40, required: true %></p>
+  <p><%= form.label :password_confirmation %><%= form.password_field :password_confirmation, size: 40, required: true %></p>
+
+  <%= form.submit %>
+<% end %>

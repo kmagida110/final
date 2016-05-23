@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+nav {
+  
+  background-image: url('mountain_road.jpg');
+  color: black;
+  height: 125px;
+  background-size: auto 150px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+nav h1{
+	text-align: center;
+	color:black;
+}
+
+nav ul {
+  position:fixed;
+  top:100;
+  width:100%;
+  display: inline;
+  margin:0;
+  padding-left:10px;
+  padding-right: 100px
+}
+nav li {
+  display: inline;
+  border-right: 1px solid #bbb;
+  list-style-type: none;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+nav li a{
+  display: inline;
+  text-align: left;
+  color: blue;
+}
+
+.container{
+	margin: 10px auto;
+	padding:10px;
+}
+
+

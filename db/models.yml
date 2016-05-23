@@ -1,41 +1,42 @@
 User
-	name: string
-	email: string
-	password: string
+  name: string
+  email: string
+  password: string
+  admin: boolean(false)
 
 UserRoute
-	user_id: integer
-	route_id: integer
-	completed: boolean
+  user_id: integer
+  route_id: integer
+  completed: boolean
 
 # May add more information to the resources below as I decide what features I want to focus on. The information
 # below will serve as a the basic structure.
 State
-	name: string
-	capital_id: integer
+  name: string
+  capital_id: integer
 
 City
-	name: string
-	population: integer
-	lat: integer
-	long: integer
+  name: string
+  population: integer
+  lat: integer
+  long: integer
 
 Landmarks
-	name: string
-	city_id: integer
-	description: text
+  name: string
+  city_id: integer
+  description: text
 
 Routes
-	name: text
-	legs: integer
-	description: text
+  name: text
+  legs: integer
+  description: text
 
 Waypoints
-	route_id: integer
-	city_id: integer
-	route_number: integer
-	distance: integer
-	last_point: boolean
+  route_id: integer
+  city_id: integer
+  route_number: integer
+  distance: integer
+  last_point: boolean
 
 
 # Example table for a typical Book model.
