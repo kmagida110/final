@@ -82,7 +82,20 @@ table, th, td{
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    height:100px; 
+    width:150px; 
+}
+.landmark-main-page{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width:450px; 
+}
+.image-links{
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.side-block{
+  display: inline-block;
 
 }
 

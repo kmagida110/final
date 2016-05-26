@@ -1,7 +1,7 @@
 class Landmark < ActiveRecord::Base
 	
 	belongs_to :city, :dependent => :delete
-
-	belongs_to :state
+	has_many :waypoints, :through => :city
+	has_many :routes, :through => :waypoints
 
 end

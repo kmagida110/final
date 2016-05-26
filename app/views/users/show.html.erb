@@ -14,8 +14,27 @@
 <% else %>
 <%= link_to "Mark as Completed", owner_path + '?user_id=' + @user.id.to_s + '&route_id=' + route.id.to_s + '&completed=1', method: :patch %>
 <% end %>
+ - <%= link_to "Delete From Profile", owner_path + '?user_id=' + @user.id.to_s + '&route_id=' + route.id.to_s, method: :delete %>
 </li>
 <% end %>
+<h3>Places I've been</h3>
+<div>
+
+<% @complete_routes.each do |route| %>
+<% route.landmarks.each do |lm| %>
+<%= image_tag lm.image_url, class: "landmark-thumbnail" %>
+<%end%>
+<%end%>
+</div>
+<h3>Places I want to go</h3>
+<div>
+
+<% @incomplete_routes.each do |route| %>
+<% route.landmarks.each do |lm| %>
+<%= image_tag lm.image_url, class: "landmark-thumbnail" %>
+<%end%>
+<%end%>
+</div>
 
 </ul>
 

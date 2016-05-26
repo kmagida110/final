@@ -7,16 +7,39 @@
 <% end %>
 </ol>
 <h2>Places You'll See</h2>
-<% @route.landmarks.each do |lm| %>
-<p><%= link_to lm.name, landmark_path(lm)%></p> 
-<% end %>
-<div>
-<% @route.landmarks.each do |lm| %>
-<%= image_tag lm.image_url, class: "landmark-thumbnail" %>
 
+
+
+<% @route.landmarks.each do |lm| %>
+<div class="side-block">
+<%= image_tag lm.image_url, class: "landmark-thumbnail" %>
+</div>
 <%end%>
 </div>
-<p><%= link_to "Delete Route", route_path(@route), method: :delete %> <%= link_to "Edit Route", edit_route_path(@route)%></p>
+
+<% @route.landmarks.each do |lm| %>
+<div class="side-block">
+<p class="image-links"><%= link_to lm.name, landmark_path(lm)%></p> 
+</div>
+<% end %>
+<div>
+<p><%= link_to "Delete Route", route_path(@route), method: :delete %> <%= link_to "Edit Route", edit_route_path(@route)%>
+<% if @cur_user %>
+<% ur = Owner.where(user_id: @cur_user.id, route_id: @route.id)[0] %>
+
+<% if !ur %>
+<%= link_to "Add to my profile", owner_path + '?user_id=' + @cur_user.id.to_s + '&route_id=' + @route.id.to_s, method: :post %>
+<% else %>
+
+<% if ur.completed %>
+<%= link_to "Mark as Undone", owner_path + '?user_id=' + @cur_user.id.to_s + '&route_id=' + @route.id.to_s + '&completed=0', method: :patch %>
+<% else %>
+<%= link_to "Mark as Completed", owner_path + '?user_id=' + @cur_user.id.to_s + '&route_id=' + @route.id.to_s + '&completed=1', method: :patch %>
+<% end %>
+<% end %>
+<% end %>
+
+</p>
 
 
 

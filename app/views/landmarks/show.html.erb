@@ -1,11 +1,19 @@
-<h2>About <%= @landmark.name  %><h2>
-
-<br>
+<h2>About the <%= @landmark.name  %><h2>
 <h3>In <%= @landmark.city.full_name %></h3>
 <br>
+
 <%= image_tag @landmark.image_url, class: "landmark-main-image"%>
 <p><%= @landmark.description %></p>
+
+<h3>Routes to see <%= @landmark.name%></h3>
+<ul>
+<% @landmark.routes.to_set.each do |route| %>
+<li><%=link_to route.name, route_path(route)%></li>
+<%end%>
+</ul>
 <%= link_to "Edit", edit_landmark_path(@landmark)%>
 <%= link_to "Delete", landmark_path(@landmark), method: :delete%>
+
+
 
 

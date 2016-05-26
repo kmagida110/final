@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post '/owner' => 'owners#create'
   patch '/owner' => 'owners#edit'
+  delete '/owner' => 'owners#destroy'
   get '/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

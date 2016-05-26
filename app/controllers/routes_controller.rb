@@ -7,6 +7,7 @@ class RoutesController < ApplicationController
 
 	def show
 		@route = Route.find_by(id: params[:id])
+		@cur_user = User.find_by(id: session[:user_id])
 	end
 
 	def new

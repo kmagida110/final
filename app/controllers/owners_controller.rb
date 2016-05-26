@@ -16,9 +16,16 @@ class OwnersController < ApplicationController
 		ur = Owner.where(route_id: route_id, user_id: user_id)[0]
 		ur.completed = params["completed"].to_i
 		ur.save
-		redirect_to user_path(ur.user_id)
-
-		
+		redirect_to user_path(ur.user_id)		
 	end
+
+	def destroy
+		route_id = params["route_id"]
+		user_id = params["user_id"]
+		ur = Owner.where(route_id: route_id, user_id: user_id)[0]
+		ur.delete
+		redirect_to user_path(ur.user_id)	
+
+	end	
 
 end

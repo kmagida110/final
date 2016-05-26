@@ -30,6 +30,8 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find_by(id: params[:id])
 		@cur_user = User.find_by(id: session[:user_id])
+		@complete_routes = Owner.where(user_id: params[:id],completed: true)
+		@incomplete_routes = Owner.where(user_id: params[:id],completed: false)
 		if @cur_user.admin
 			render 'show'
 		return

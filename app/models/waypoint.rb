@@ -1,5 +1,6 @@
 class Waypoint < ActiveRecord::Base
-	belongs_to :city
-	belongs_to :route
+	
+	belongs_to :city, :dependent => :delete 
+	belongs_to :route, :dependent => :delete
 	has_many :landmarks, :through => :cities
 end

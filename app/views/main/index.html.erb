@@ -1,1 +1,8 @@
-<h1>Test Main</h1>
+<h1>Go Somewhere New!</h1>
+<h2>Click an image to get started</h2>
+<% @landmarks.each do |lm| %>
+
+<%= link_to landmark_path(lm) do %>
+    <%= image_tag(lm.image_url, class: "landmark-main-page")%>
+<% end %>
+<% end %>
