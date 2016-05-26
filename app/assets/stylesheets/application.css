@@ -16,7 +16,7 @@
 nav {
   /*image: url('mountain_road.jpg');*/
   background: url('mountain_road.jpg') no-repeat 0% 0%,url('mountain_range.jpg') no-repeat 50% 0%,url('corn.jpg') no-repeat 100% 0%;
-  background-color: black;
+  background-color: white;
   color: black;
   height: 125px;
   background-size: 33.3333% 100%;
