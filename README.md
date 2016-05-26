@@ -6,6 +6,9 @@ The database will be seeded with all the states and many major cities with descr
 
 Ideally the seeding of the databases will be done automatically through an API call to the census or a similar site.
 
+# Live online
+This app is live online at cryptic-taiga-86428.herokuapp.com.
+
 # Resources
 
 1. User - This will be a basic storage of information to allow people to log in and track their preferred routes

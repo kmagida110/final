@@ -73,7 +73,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var start = {lat: lats[0],lng: longs[0]};
   var end = {lat: lats[lats.length-1],lng: longs[longs.length-1]};
   var waypoints = [];
-  for (var i = 2; i <= lats.length-2; i++) {
+  for (var i = 1; i <= lats.length-2; i++) {
     	waypoints.push(
     		{location:{ lat: lats[i], lng: longs[i]}});
     	
