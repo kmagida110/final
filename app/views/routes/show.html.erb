@@ -2,10 +2,15 @@
 <p><%= @route.description %></p>
 <h4>Cities</h4>
 <ol>
-<% @route.cities.order('route_number').each do |city| %>
+<% ordered_cities = @route.cities.order('route_number') %>
+<% ordered_cities.each do |city| %>
 <li><%= city.full_name %></li>
 <% end %>
 </ol>
+
+<h4>Map Your Route</h4>
+<div id="map"></div>
+
 <h2>Places You'll See</h2>
 
 
@@ -38,8 +43,37 @@
 <% end %>
 <% end %>
 <% end %>
+<% lats = ordered_cities.map do |city| city.lat end %>
+<% longs = ordered_cities.map do |city| city.long end %>
+<% names = ordered_cities.map do |city| city.name end %>
 
-</p>
+<script>
+  function initMap() {
+  	var lats = <%= lats %>;
+  	var longs = <%= longs%>;
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+      center: {lat: 37.0902, lng: -95.7129},
+      zoom: 3
+    	}
+    );
+    for (var i = lats.length - 1; i >= 0; i--) {
+    	var point = { lat: lats[i], lng: longs[i] };
+    	var marker = new google.maps.Marker({
+    	position: point,
+    	title:"X"
+		});
+
+
+		marker.setMap(map);
+    };
+
+    
+
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+    async defer></script>
 
 
 

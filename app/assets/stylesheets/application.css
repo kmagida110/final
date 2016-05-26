@@ -88,7 +88,7 @@ table, th, td{
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    width:450px; 
+    width:200px; 
 }
 .image-links{
   padding-right: 40px;
@@ -96,6 +96,9 @@ table, th, td{
 }
 .side-block{
   display: inline-block;
-
+}
+#map{
+  width:500px;
+  height: 400px;
 }
 
