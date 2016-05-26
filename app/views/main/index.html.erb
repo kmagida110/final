@@ -1,15 +1,16 @@
 <h2>Go Somewhere New!</h2>
 <h3>Click an image or pick a route to get started</h3>
+<h3>Routes</h3>
 <ul class="inline-list">
 <% @routes.each do |route|%>
 <li class="inline-list"><%= link_to route.name, route_path(route) %></li>
 <%end%>
 </ul>
-
+<h3>Landmarks</h3>
 <% @landmarks.each do |lm| %>
 
 <%= link_to landmark_path(lm) do %>
     <%= image_tag(lm.image_url, class: "landmark-main-page")%>
 <% end %>
 <% end %>
-<h3>Routes</h3>
+
