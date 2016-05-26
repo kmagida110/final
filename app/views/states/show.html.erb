@@ -1,0 +1,28 @@
+<h2><%= @state.name %> Information</h2>
+<h4>Capital City: <%= @state.city.name %></h4>
+
+
+
+<table class="city-table">
+<thead>
+	<tr>
+		<th>City Name</th>
+		<th>Population</th>
+		<th>Landmarks</th>
+	</tr>
+</thead>
+
+<tbody>
+
+	<% @cities.each do |city| %>
+	<tr>
+	<td> <%= link_to city.name, city_path(city)%></td>
+	<td> <%= number_with_delimiter(city.population, :delimiter => ',')  %></td>
+	<td><%= city.landmarks.count %></td>
+	</tr>
+	<% end %>
+</tbody>
+
+<br>
+<%= will_paginate @cities %>
+</table>

@@ -1,0 +1,28 @@
+<h1>Landmarks</h1>
+
+<h5><%= link_to "Add a Landmark", new_landmark_path %></h5>
+<table>
+<thead>
+	<tr>
+		<th>Landmark</th>
+		<th>City</th>
+		<th>Description</th>
+		<th>Delete Landmark</th>
+	</tr>
+</thead>
+
+<tbody>
+
+	<% @landmarks.each do |landmark| %>
+	<tr>
+	<td> <%= link_to landmark.name, landmark_path(landmark)%></td>
+	<td><%=landmark.city.full_name%></td>	
+	<td><%= landmark.description[0...100] %></td>
+	<td><%= link_to "Delete Landmark", landmark_path(landmark), method: :delete%></td>
+	
+	</tr>
+	<% end %>
+</tbody>
+</table>
+<br>
+<%= will_paginate @cities %>

@@ -1,0 +1,16 @@
+<%= link_to "Add a Landmark", new_landmark_path %>
+<%= form_for @city do |f| %>
+
+  <p><%= f.label :name %><%= f.text_field :name, size: 40, autofocus: true, required: true %></p>
+  <p><%= f.label :population %><%= f.text_field :population, size: 40%></p>
+  <p>Lat/Long are optional but are required for city to appear on map</p>
+  <p><%= f.label :lat %><%= f.text_field :lat, size: 40 %></p>
+  <p><%= f.label :long %><%= f.text_field :long, size: 40%></p>
+  <p><%= f.collection_select :state_id, State.all.order('name'), :id, :name %></p>
+  
+
+  <p><%= f.submit %></p>
+
+
+  
+<% end %>

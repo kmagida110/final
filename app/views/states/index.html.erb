@@ -1,0 +1,27 @@
+<h2>States</h2>
+<%= form_tag states_path, :method => :get do %>
+<%= text_field_tag :keyword, '', placeholder: 'Search for a state' %>
+<% end %>
+<table>
+<thead>
+	<tr>
+		<th>State Name</th>
+		<th>Active Cities</th>
+		<th>Active Landmarks</th>
+	</tr>
+</thead>
+
+<tbody>
+
+	<% @states.each do |state| %>
+	<tr>
+	<td> <%= link_to state.name, state_path(state)%></td>
+	<td> <%= state.cities.count %> </td>
+	<td><%= state.landmarks.count %></td>
+	
+	</tr>
+	<% end %>
+</tbody>
+</table>
+<br>
+<%= will_paginate @states %>

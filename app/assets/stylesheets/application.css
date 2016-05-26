@@ -29,25 +29,22 @@ nav h1{
 }
 
 nav ul {
-  position:fixed;
-  top:100;
+
   width:100%;
   display: inline;
   margin:0;
-  padding-left:10px;
-  padding-right: 100px
+  padding:5px;  
 }
 nav li {
   display: inline;
   border-right: 1px solid #bbb;
   list-style-type: none;
-  padding-right: 50px;
-  padding-left: 50px;
+  padding:5px;
 }
 nav li a{
   display: inline;
   text-align: left;
-  color: blue;
+  color: navy;
 }
 
 .container{
@@ -55,4 +52,37 @@ nav li a{
 	padding:10px;
 }
 
+.notice{
+	color: red;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size:20px;
+}
+
+table, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+}
+
+.city-table{
+  float: left;
+  text-align: center;
+  padding-right: 100px;
+}
+.table_holder{
+  border:none; 
+}
+.landmark-main-image{
+  width:400px;
+  float: center;
+  height: auto;
+}
+.landmark-thumbnail{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height:100px; 
+
+}
 

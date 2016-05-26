@@ -2,35 +2,50 @@
 <html>
 <head>
   <title>Road Tripping</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	
   <nav>
-<h1>Road Tripping</h1>
+<h1><%= link_to "Road Tripping", root_path%></h1>
     <ul>
-     <li><%= link_to "Routes", root_path %></li>
-     <li><%= link_to "Cities", root_path %></li>
-     <li><%= link_to "Landmarks", root_path %></li>
+     <li><%= link_to "Routes", routes_path %></li>
+     <li><%= link_to "Cities", cities_path %></li>
+     <li><%= link_to "Landmarks", landmarks_path %></li>
+     <li><%= link_to "States", states_path %></li>
      <% if session["user_id"].present? %>
      <% cur_user = User.find_by(id: session["user_id"]) %>
-     	<li><%= link_to	cur_user.name +'s Trips', root_path %></li>
+     <% if cur_user %>
+     <li style="float:right"><%= link_to "Log Out", logout_path %></li>
+     <li style="float:right"><%= link_to cur_user.name + "'s Trips", user_path(cur_user.id) %></li>
+     <% if cur_user.admin %>
+     <li style="float:right"><%= link_to "Admin Console", users_path %></li>
+     <%end%>
+
      <% else %>
-     <li style="float:right"><%= link_to "Log In", root_path %></li>
+     
+     <li style="float:right"><%= link_to "Log In", login_path %></li>
+     <li style="float:right"><%= link_to "Sign Up", new_user_path %></li>
+     <% end %>
      <% end %>
      
-     <li style="float:right"><%= link_to "Sign Up", root_path %></li>
-     <li style="float:right"><%= link_to "My Account", root_path %></li>
+     
+     
     </ul>
     
   </nav>
+<div class="notice">
+	<% if flash["notice"].present? %>
+	<p><%= flash["notice"] %></p>
+	<% end %>
+</div>
 
 <div class="container">
-<% if flash["notice"].present? %>
-<p><%= flash["notice"] %></p>
-<% end %>
+
+
+
 <%= yield %>
 
 </div>

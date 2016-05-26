@@ -1,78 +1,43 @@
 User
   name: string
   email: string
-  password: string
+  password_digest: text
   admin: boolean(false)
 
-UserRoute
+Owners
   user_id: integer
   route_id: integer
-  completed: boolean
+  completed: boolean(false)
 
-# May add more information to the resources below as I decide what features I want to focus on. The information
-# below will serve as a the basic structure.
 State
   name: string
-  capital_id: integer
+  abbreviation: string
+  capital_city: integer
 
 City
   name: string
+  full_name: string
   population: integer
-  lat: integer
-  long: integer
+  lat: float
+  long: float
+  state_id: integer
 
-Landmarks
+Landmark
   name: string
   city_id: integer
   description: text
+  image_url: string
 
-Routes
+Route
   name: text
   legs: integer
   description: text
 
-Waypoints
+Waypoint
   route_id: integer
   city_id: integer
   route_number: integer
-  distance: integer
-  last_point: boolean
 
 
-# Example table for a typical Book model.
-#
-# Book
-#   title: string
-#   author_id: integer
-#   price: integer
-#   summary: text
-#   hardcover: boolean
-#
-# Indent consistently!  Follow the above syntax exactly.
-# Typical column choices are: string, text, integer, boolean, date, time, and datetime.
-#
-#
-# Specifying Default Values
-# ----------------------------------------------------
-# Default column values can be specified like this:
-#    price: integer(0)
-#
-# If not specified, Boolean columns always default to false.
-#
-#
-# Convention-Based Defaults:
-# ----------------------------------------------------
-# You can omit the column type if it's a string, or if it's obviously an integer column:
-#
-#
-# Book
-#   title
-#   author_id
-#   price: integer
-#   summary: text
-#   hardcover: boolean
-#
-# Complete details are in the README file online.
-#
-# Have fun!
+
 

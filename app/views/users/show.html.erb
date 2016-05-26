@@ -1,8 +1,22 @@
-<h1>User Page</h1>
+<h1>Your account</h1>
 
-<% if session['user_id'].to_i == @user.id %>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
+<p><%= link_to "Edit Account", edit_user_path(@user.id) %></td>
+<p>User Name: <%= @user.name %></p>
+<p>Email Address: <%= @user.email %></p>
+
+
+<ul>
+<% @user.routes.each do |route| %>
+<% ur = Owner.where(user_id: @user.id, route_id: route.id)[0] %>
+<li><%= route.name + ' - ' %> 
+<% if ur.completed %>
+<%= link_to "Mark as Undone", owner_path + '?user_id=' + @user.id.to_s + '&route_id=' + route.id.to_s + '&completed=0', method: :patch %>
 <% else %>
-<p>Buzz off</p>
+<%= link_to "Mark as Completed", owner_path + '?user_id=' + @user.id.to_s + '&route_id=' + route.id.to_s + '&completed=1', method: :patch %>
 <% end %>
+</li>
+<% end %>
+
+</ul>
+
+

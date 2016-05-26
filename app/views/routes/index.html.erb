@@ -1,0 +1,35 @@
+<h1>Routes</h1>
+<h4><%= link_to "Add a Route",new_route_path %></h4>
+<% @routes.each do |route| %>
+<ul>
+<li><%= link_to route.name, route_path(route) %></li>
+
+<% if @cur_user %>
+<% ur = Owner.where(user_id: @cur_user.id, route_id: route.id)[0] %>
+
+<% if !ur %>
+<%= link_to "Add to my profile", owner_path + '?user_id=' + @cur_user.id.to_s + '&route_id=' + route.id.to_s, method: :post %>
+<% else %>
+
+<% if ur.completed %>
+<%= link_to "Mark as Undone", owner_path + '?user_id=' + @cur_user.id.to_s + '&route_id=' + route.id.to_s + '&completed=0', method: :patch %>
+<% else %>
+<%= link_to "Mark as Completed", owner_path + '?user_id=' + @cur_user.id.to_s + '&route_id=' + route.id.to_s + '&completed=1', method: :patch %>
+<% end %>
+<% end %>
+<% end %>
+
+<ol>
+<% route.cities.order('route_number').each do |city| %>
+<li><%= city.full_name %><% city.landmarks.each do |lm| %><%=' - ' + lm.name  %> 
+<%end%>
+</li>
+<% end %>
+</ol>
+
+</ul>
+<% end %>
+<%= will_paginate @routes %>
+
+
+

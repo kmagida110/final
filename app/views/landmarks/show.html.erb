@@ -1,0 +1,11 @@
+<h2>About <%= @landmark.name  %><h2>
+
+<br>
+<h3>In <%= @landmark.city.full_name %></h3>
+<br>
+<%= image_tag @landmark.image_url, class: "landmark-main-image"%>
+<p><%= @landmark.description %></p>
+<%= link_to "Edit", edit_landmark_path(@landmark)%>
+<%= link_to "Delete", landmark_path(@landmark), method: :delete%>
+
+

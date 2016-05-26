@@ -1,0 +1,17 @@
+<h2>About <%= @city.name + ', ' + @city.state.name %></h2>
+<br>
+<h3>Population <%= number_with_delimiter(@city.population, :delimiter =>',') %></h3>
+<br>
+<%= link_to "Edit City", edit_city_path(@city)%>
+<h3>Nearby Landmarks:</h3>
+<% if @city.landmarks.length == 0 %>
+<p>No Landmarks</p>
+<% else %>
+<ul>
+<% @city.landmarks.each do |landmark| %>
+<li><%= link_to landmark.name,landmark_path(landmark) %> </li>
+<% end %>
+<% end %>
+<%= link_to "Add a Landmark", new_landmark_path %>
+</ul>
+

@@ -1,0 +1,10 @@
+<%= form_for @route do |f| %>
+
+  <p><%= f.label :name %><%= f.text_field :name, size: 40, autofocus: true, required: true %></p>
+  <p><%= f.label :description %><%= f.text_area :description, size: "40x5" %></p>
+  <p><%= f.label :legs %><%= f.text_field :legs, size: 40 %></p>
+  <p><%= f.submit %></p>
+
+
+  
+<% end %>

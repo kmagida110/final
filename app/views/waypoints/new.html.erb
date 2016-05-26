@@ -1,0 +1,11 @@
+<h2>Add City #<%= @leg + 1 %></h2>
+
+
+<%= form_for @waypoint do |f| %>
+
+  <p><%= f.collection_select :city_id, City.all.order('full_name'), :id, :full_name %></p>
+  
+
+  <p><%= f.submit "Update City"%></p>
+  <% end %>
+

@@ -1,0 +1,37 @@
+<h1>Cities</h1>
+
+<h5><%= link_to "Add a City", new_city_path %></h5>
+<%= form_tag cities_path, :method => :get do %>
+<%= text_field_tag :keyword, '', placeholder: 'Search for a city' %>
+<% end %>
+
+<table>
+<thead>
+	<tr>
+		<th>City Name</th>
+		<th>Population</th>
+		<th>Active Landmarks</th>
+		<th>Delete City</th>
+	</tr>
+</thead>
+
+<tbody>
+
+	<% @cities.each do |city| %>
+	<tr>
+	<td> <%= link_to city.full_name, city_path(city)%></td>
+	<% if city.population %>
+	<td><%= number_with_delimiter(city.population, :delimiter =>',')%></td>
+	<% else %>
+	<td>&lt37,000</td>
+	<% end %>
+	
+	<td><%= city.landmarks.count %></td>
+	<td><%= link_to "Delete City", city_path(city), method: :delete%></td>
+	
+	</tr>
+	<% end %>
+</tbody>
+</table>
+<br>
+<%= will_paginate @cities %>
