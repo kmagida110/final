@@ -2,7 +2,7 @@ class MainController < ApplicationController
 
 	def index
 		@landmarks = Landmark.all.limit(6)
-		@cur_user = User.find_by(id: session[:user_id])
+		#@cur_user = User.find_by(id: session[:user_id])
 		@routes = Route.all.limit(5)
 		# Show landmarks they haven't considered
 		if @cur_user
