@@ -129,6 +129,12 @@ fear.description = "Recreate Fear & Loathing in Las Vegas, drive through a deser
 fear.legs = 1
 fear.save
 
+cross = Route.new
+cross.name = "Long Cross Country Trip"
+cross.description = "Take a long trip"
+cross.legs = 6
+cross.save
+
 parks1 = Waypoint.new
 parks1.route_id = parks.id
 parks1.city_id = bean.city_id
@@ -188,6 +194,24 @@ kyle_parks.user_id = kyle.id
 kyle_parks.route_id = parks.id
 kyle_parks.completed = false
 kyle_parks.save
+
+cross0 = Waypoint.create(:route_id => cross.id,:city_id => City.find_by(full_name: "Boston, MA").id,:route_number =>0)
+cross1 = Waypoint.create(:route_id => cross.id,:city_id => statue.city_id,:route_number =>1)
+cross2 = Waypoint.create(:route_id => cross.id,:city_id => City.find_by(full_name: "Columbus, OH").id,:route_number =>2)
+cross3 = Waypoint.create(:route_id => cross.id,:city_id => bean.city_id,:route_number =>3)
+cross4 = Waypoint.create(:route_id => cross.id,:city_id => City.find_by(full_name: "St. Paul, MN").id,:route_number =>4)
+cross5 = Waypoint.create(:route_id => cross.id,:city_id => rushmore.city_id,:route_number =>5)
+cross6 = Waypoint.create(:route_id => cross.id,:city_id => City.find_by(full_name: "Cheyenne, WY").id,:route_number =>6)
+cross7 = Waypoint.create(:route_id => cross.id,:city_id => City.find_by(full_name: "San Francisco, CA").id,:route_number =>7)
+cross0.save
+cross1.save
+cross2.save
+cross3.save
+cross4.save
+cross5.save
+cross6.save
+cross7.save
+
 
 
 

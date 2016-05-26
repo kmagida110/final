@@ -2,7 +2,7 @@
 <br>
 <h3>Population <%= number_with_delimiter(@city.population, :delimiter =>',') %></h3>
 <br>
-<%= link_to "Edit City", edit_city_path(@city)%>
+
 <h3>Nearby Landmarks:</h3>
 <% if @city.landmarks.length == 0 %>
 <p>No Landmarks</p>
@@ -14,4 +14,12 @@
 <% end %>
 <%= link_to "Add a Landmark", new_landmark_path %>
 </ul>
+<h4>Routes that visits <%= @city.name %></h4>
+<ul>
+<% @city.routes.to_set.each do |route| %>
+<li><%= link_to route.name, route_path(route)%></li>
+<%end%>
+</ul>
+<%= link_to "Edit City", edit_city_path(@city)%>
+<%= link_to "Delete City", city_path(@city), method: :delete%>
 

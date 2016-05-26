@@ -4,7 +4,7 @@
 <ol>
 <% ordered_cities = @route.cities.order('route_number') %>
 <% ordered_cities.each do |city| %>
-<li><%= city.full_name %></li>
+<li><%= link_to city.full_name, city_path(city)%></li>
 <% end %>
 </ol>
 
@@ -48,29 +48,49 @@
 <% names = ordered_cities.map do |city| city.name end %>
 
 <script>
+ // Code edited from https://developers.google.com/maps/documentation/javascript/examples/directions-simple
   function initMap() {
   	var lats = <%= lats %>;
   	var longs = <%= longs%>;
+  	var directionsService = new google.maps.DirectionsService;
+  	var directionsDisplay = new google.maps.DirectionsRenderer;
     var mapDiv = document.getElementById('map');
     var map = new google.maps.Map(mapDiv, {
       center: {lat: 37.0902, lng: -95.7129},
       zoom: 3
     	}
     );
-    for (var i = lats.length - 1; i >= 0; i--) {
-    	var point = { lat: lats[i], lng: longs[i] };
-    	var marker = new google.maps.Marker({
-    	position: point,
-    	title:"X"
-		});
-
-
-		marker.setMap(map);
-    };
-
+    directionsDisplay.setMap(map);
     
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  	  
 
   }
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  var lats = <%= lats %>;
+  var longs = <%= longs%>;
+  var start = {lat: lats[0],lng: longs[0]};
+  var end = {lat: lats[lats.length-1],lng: longs[longs.length-1]};
+  var waypoints = [];
+  for (var i = 2; i <= lats.length-2; i++) {
+    	waypoints.push(
+    		{location:{ lat: lats[i], lng: longs[i]}});
+    	
+		};
+  	directionsService.route({
+    origin: start,
+    destination: end,
+    waypoints: waypoints,
+    travelMode: google.maps.TravelMode.DRIVING
+  }, function(response, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
     async defer></script>
