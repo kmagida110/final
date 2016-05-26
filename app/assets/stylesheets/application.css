@@ -14,11 +14,12 @@
  *= require_self
  */
 nav {
-  
-  background-image: url('mountain_road.jpg');
+  /*image: url('mountain_road.jpg');*/
+  background: url('mountain_road.jpg') no-repeat 0% 0%,url('mountain_range.jpg') no-repeat 50% 0%,url('corn.jpg') no-repeat 100% 0%;
+  background-color: black;
   color: black;
   height: 125px;
-  background-size: auto 150px;
+  background-size: 33.3333% 100%;
   padding: 5px;
   font-size: 20px;
 }
@@ -44,7 +45,10 @@ nav li {
 nav li a{
   display: inline;
   text-align: left;
-  color: navy;
+  color: black  ;
+}
+nav li a:visited{
+  color: black ;
 }
 
 .container{
