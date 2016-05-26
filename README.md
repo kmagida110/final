@@ -7,7 +7,7 @@ The database will be seeded with all the states and many major cities with descr
 Ideally the seeding of the databases will be done automatically through an API call to the census or a similar site.
 
 # Live online
-This app is live online at cryptic-taiga-86428.herokuapp.com. Admin rights are associated with kyle@example.org, password: password.
+This app is live online at http://cryptic-taiga-86428.herokuapp.com. Admin rights are associated with kyle@example.org, password: password.
 
 # Resources
 
