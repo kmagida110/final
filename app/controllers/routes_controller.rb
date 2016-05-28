@@ -54,7 +54,9 @@ class RoutesController < ApplicationController
 		route.legs = route_params[:legs]
 		0.upto(route.legs) do |y|
 			del = Waypoint.where(route_id: route.id, route_number: y)
-			del[0].delete
+			if del[0]
+				del[0].delete
+			end
 			way = Waypoint.new
 			way.route_id = route.id
 			way.route_number = y
