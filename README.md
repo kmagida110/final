@@ -1,10 +1,14 @@
 # Road Trip Finder
 
-This project will provide different routes (for road trips or sightseeing) around the US. The main page will be a map with all the routes that a user has selected drawn in. The user will also be able to see detailed information about each route that the areas they will pass through. 
+This project will provide different routes (for road trips or sightseeing) around the US. The main page shows places that the user could go and the different routes in the system. If logged in the landmarks shown are ones that are not on any routes the user has added. The user will also be able to see detailed information about each route that the areas they will pass through. 
 
-The database will be seeded with all the states and many major cities with descriptive information that can be added in bulk. A few routes and landmarks will also be added as a base and more can be added. There will also be the option to add cities but it will either require the user to know that lat/long or require a call to the Google API.
+The route page shows the landmarks and cities that the route passes through and a Google Map of the route based on the pre-loaded lat/longs. 
 
-Ideally the seeding of the databases will be done automatically through an API call to the census or a similar site.
+The user account pages allows the user to select which routes they have completed and show the landmarks they have visited and the ones on routes they haven't visited. 
+
+The database will be seeded with all the states and many major cities with descriptive information that can be added in bulk. A few routes and landmarks are included in the seed file and more can be added and edited. There is an option to add cities but it requires that the user input a lat/long. Since there are 1,000 cities pre-loaded this should not be much of an issue.
+
+The database is seeded through two datasources referenced in the seeds file. Both of them came off of GitHub and include information on cities and states. City data includes the lat/long, population and state, state includes the capital city. Raw data is in the data file.
 
 # Live online
 This app is live online at http://cryptic-taiga-86428.herokuapp.com. Admin rights are associated with kyle@example.org, password: password.

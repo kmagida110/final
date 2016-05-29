@@ -1,0 +1,14 @@
+<% if cur_user %>
+<% ur = Owner.where(user_id: cur_user.id, route_id: route.id)[0] %>
+
+<% if !ur %>
+<%= link_to "Add to my profile", owner_path + '?user_id=' + cur_user.id.to_s + '&route_id=' + route.id.to_s, method: :post %>
+<% else %>
+
+<% if ur.completed %>
+<%= link_to "Mark as Undone", owner_path + '?user_id=' + cur_user.id.to_s + '&route_id=' + route.id.to_s + '&completed=0', method: :patch %>
+<% else %>
+<%= link_to "Mark as Completed", owner_path + '?user_id=' + cur_user.id.to_s + '&route_id=' + route.id.to_s + '&completed=1', method: :patch %>
+<% end %>
+<% end %>
+<% end %>
